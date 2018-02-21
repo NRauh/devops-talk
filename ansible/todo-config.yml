@@ -1,0 +1,42 @@
+- name: Setup and deploy to server
+  hosts: webserver
+  remote_user: root
+  gather_facts: no
+  pre_tasks:
+    - name: Install Python 2
+      raw: test -e /usr/bin/python || (apt-get update && apt-get install -y python-minimal)
+    - name: gather facts
+      setup:
+  tasks:
+    - name: Install Nginx
+      apt:
+        name: nginx
+        update_cache: yes
+
+    - name: Configure firewall
+      ufw:
+        rule: allow
+        name: Nginx Full
+
+    - name: Ensure Nginx is running
+      service:
+        name: nginx
+        state: restarted
+
+    - name: Remove default index
+      file:
+        state: absent
+        path: /var/www/html/index.nginx-debian.html
+    
+    - name: Install Zip
+      apt:
+        name: zip
+
+    - name: Get latest release
+      unarchive:
+        src: # release url
+        dest: ~/
+        remote_src: yes
+
+    - name: Copy to www dir
+      shell: cp -r ~/build/* /var/www/html
