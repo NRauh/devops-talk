@@ -1,0 +1,24 @@
+language: node_js
+node_js:
+- '8'
+install:
+- cd todo/
+- npm install
+script:
+- npm run lint
+- npm test
+before_deploy:
+  - npm run build
+  - zip -r build.zip build/*
+  - git config --local user.name "Nate Rauh"
+  - git config --local user.email "NRauh@users.noreply.github.com"
+  - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
+deploy:
+  provider: releases
+  api_key:
+    secure: YyqAYQRQngJITeamCfHjQkaOZC8BOctP/05LvF0AaXCwXkUqKuTbS+lAgQm2XiIwRdLcCGeWeZQN+rENq21jIMbQE7PrfGmeWE+uoHtCGpZ0Xji4Ni7yGp7/2OuAoJxN0zQjTr+MPFoV/+0nSCave6lTVUfT02kPbSUS8wjCDrcWIcyU/rjtNQotjSQdv+yOPZk7LzKUv16C/jvcZsEmF4zzm5jTJ3Ms1xRQ6honeEgw/IVBBszBuBo1pplwggwJy5eg2yiLJG+egfGO2ZXAdd3tab/OeK4ApLUS2traVZSNYbZxorxT9PZXWJxiv26WJVOzBRh6ja0PWm66mMZuwcZxnqvpgfhlDAULiZGln8Kcz2+lhCeXfdcNhOR4AS7eKXd2puVb4sr//y5aKJldEMutTstSEmBZTfAwU6dPxMNsRGzgquXp/Nze8Y+zGQ+Tb8s/5f6oVVfD4+B9ZWIWgrgjGEQKXl5c2HAY+7frygLjpSua70NlPLGtaxUB8hG+Ge18MRlBX5+4IZP+p+i5E9zkr8zPEHMfF/YGnoOwye0A7X9GVDCDGQXKnq1IIH9Frmkiy/GZbHRm6KUnN4L2XroAZhn/2Jz7oYIMn7f1/z0azSlgAZqm5tuA/J6Qx/qlPyVld8r65bnDgpNJ318CF7hs9Cc9extIcBS232afVV8=
+  file: build.zip
+  skip_cleanup: true
+  on:
+    repo: NRauh/devops-talk
+    branch: master
