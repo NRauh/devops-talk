@@ -5,7 +5,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <header>
+        <header className="text-center">
           <h1>Todo</h1>
         </header>
         <main>

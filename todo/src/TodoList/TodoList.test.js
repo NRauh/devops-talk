@@ -147,6 +147,7 @@ describe('<TodoList />', () => {
         <li key={123}>
           hello world
           <button
+            className="ml-1 btn btn-sm btn-info"
             data-index={0}
             onClick={expect.any(Function)}
           >
