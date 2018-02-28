@@ -53,6 +53,7 @@ export default class TodoList extends Component {
       <li key={item.id}>
         {item.text}
         <button
+          className="ml-1 btn btn-sm btn-info"
           onClick={this.changeCompletion}
           data-index={item.place}
         >
@@ -76,13 +77,20 @@ export default class TodoList extends Component {
     return (
       <div>
         <form onSubmit={this.handleAddSubmit}>
-          <input
-            type="text"
-            placeholder="What to do?"
-            value={this.state.addItemField}
-            onChange={this.handleAddChange}
-          />
-          <input type="submit" value="Add" />
+          <div className="form-row">
+            <div className="col-11">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="What to do?"
+                value={this.state.addItemField}
+                onChange={this.handleAddChange}
+              />
+            </div>
+            <div className="col-1">
+              <input className="btn btn-success" type="submit" value="Add" />
+            </div>
+          </div>
         </form>
 
         <div className="pending">
