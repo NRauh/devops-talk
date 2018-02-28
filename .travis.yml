@@ -8,15 +8,15 @@ script:
 - npm run lint
 - npm test
 before_deploy:
-  - npm run build
-  - zip -r build.zip build/*
-  - git config --local user.name "Nate Rauh"
-  - git config --local user.email "NRauh@users.noreply.github.com"
-  - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
+- npm run build
+- zip -r build.zip build/*
+- git config --local user.name "Nate Rauh"
+- git config --local user.email "NRauh@users.noreply.github.com"
+- git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
 deploy:
   provider: releases
   api_key:
-    secure: YyqAYQRQngJITeamCfHjQkaOZC8BOctP/05LvF0AaXCwXkUqKuTbS+lAgQm2XiIwRdLcCGeWeZQN+rENq21jIMbQE7PrfGmeWE+uoHtCGpZ0Xji4Ni7yGp7/2OuAoJxN0zQjTr+MPFoV/+0nSCave6lTVUfT02kPbSUS8wjCDrcWIcyU/rjtNQotjSQdv+yOPZk7LzKUv16C/jvcZsEmF4zzm5jTJ3Ms1xRQ6honeEgw/IVBBszBuBo1pplwggwJy5eg2yiLJG+egfGO2ZXAdd3tab/OeK4ApLUS2traVZSNYbZxorxT9PZXWJxiv26WJVOzBRh6ja0PWm66mMZuwcZxnqvpgfhlDAULiZGln8Kcz2+lhCeXfdcNhOR4AS7eKXd2puVb4sr//y5aKJldEMutTstSEmBZTfAwU6dPxMNsRGzgquXp/Nze8Y+zGQ+Tb8s/5f6oVVfD4+B9ZWIWgrgjGEQKXl5c2HAY+7frygLjpSua70NlPLGtaxUB8hG+Ge18MRlBX5+4IZP+p+i5E9zkr8zPEHMfF/YGnoOwye0A7X9GVDCDGQXKnq1IIH9Frmkiy/GZbHRm6KUnN4L2XroAZhn/2Jz7oYIMn7f1/z0azSlgAZqm5tuA/J6Qx/qlPyVld8r65bnDgpNJ318CF7hs9Cc9extIcBS232afVV8=
+    secure: 0srKDToTDNPKR+H4Sc2sdrfj10JpuEG/iRof31S20Cp1SgqicfoentkUUG5de+4RDtV+eXG/mTo+eogXtl57p8w9Y1avDbfxXMNir+yNIMKGtRxTbs8DTi2+TWrpQsK6uABmyy87cB8NuQWVeuQYjHwU3iGtrP9A4YOfBttXQohLeAB6ZVVQ7MMRsUUf8F4v1G6I/X8yoVu+UT/8xg/fx89fhG/FPd1dB+jF79cS9mDPBAf8FDOwoyuuCgJdNYdVnjBqE15Ew5nCMrtodUH8byP3T1qnQd26ZKxQGczjvVOwFbg/zpTCyaYVk7o4Pm/tMZSfDNDyZoKFzXNdYKpN+YjIpClip2oOroFUTWN7w8zN+8XpFM4ZK+jjlaabZINLIqvyKK9/nRJGcG4y2b60sKzoXLNLWBQmGvVcEUE2VhSxPk92EX5noFBRIFMFWWQfmQZc4upbFWiGTxtx4VwcIlxvmcNrNMTgdWfYhk95DJTaUhythJimSDdwVIzgi8ksYm2JBuvgOnQFLsipe45E/XC0g9rBVC60IxpMhXxhYOpnZiQWFZPLysIw9uGd07MJbcXan0uZzFSWXIIqOxYsfWqNY67xXUIQ1WvSIPqzoG52A09qq22WAJ4pgn2lBwY350tirA2+ViXYjow7E/ETG/RVZ5FDSI0erpGt+AcR0L8=
   file: build.zip
   skip_cleanup: true
   on:

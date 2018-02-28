@@ -3,24 +3,21 @@
   <title>Title</title>
   <meta charset="utf-8">
   <style>
-    @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
-    @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
-    @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+    @import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,400i');
+    @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
 
     body {
-      font-family: 'Droid Serif';
-    }
-
-    h1,
-    h2,
-    h3 {
-      font-family: 'Yanone Kaffeesatz';
-      font-weight: normal;
+      font-family: 'Fira Sans';
     }
 
     .remark-code,
     .remark-inline-code {
-      font-family: 'Ubuntu Mono';
+      font-family: 'Source Code Pro';
+    }
+
+    .remark-slide-content {
+      background-color: #4c667b;
+      color: white;
     }
   </style>
 </head>
@@ -32,6 +29,7 @@
       scroll: false,
       click: true,
       highlightLines: true,
+      highlightStyle: 'tomorrow-night-bright',
       sourceUrl: 'talk.md'
     });
   </script>
